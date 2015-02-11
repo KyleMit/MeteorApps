@@ -3,19 +3,20 @@
 </head>
 <body>
     <div class="container">
-        <div>
+        <header>
             <h1>ToDo List</h1>
-        </div>
+
+        </header>
 
         <ul>
-            {{#each tasks}}
-            {{> task}}
+            {{#each items}}
+            {{> item}}
             {{/each}}
         </ul>
     </div>
 </body>
 
 
-<template name="task">
+<template name="item">
     <li>{{text}}</li>
 </template>
