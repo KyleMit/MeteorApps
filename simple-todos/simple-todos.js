@@ -1,12 +1,30 @@
+/// <reference path=".meteor/local/build/programs/web.browser/packages/" />
+/// <reference path=".meteor/local/build/programs/server/packages/" />
+
 Items = new Mongo.Collection("items");
 
 if (Meteor.isClient) {
     // this code only runs on the client
     Template.body.helpers({
         items: function () {
-            return Items.find({}, {sort: {createdAt: -1}});
+            var sort = { sort: { createdAt: -1 } };
+            if (Session.get("hideCompleted")) {
+                // if hide completed is checked, filter items
+                return Items.find({ checked: { $ne: true } }, sort);
+            } else {
+                // otherwise, return all tasks
+                return Items.find({}, sort);
+            }
+        },
+        // we have to manually expose session properties to the client through helpers
+        hideCompleted: function() {
+            return Session.get("hideCompleted");
+        },
+        incompleteCount: function() {
+            return Items.find({checked: {$ne: true}}).count()
         }
     });
+
 
     Template.body.events({
         "submit .new-item": function (event) {
@@ -25,6 +43,9 @@ if (Meteor.isClient) {
 
             // prevent default form submit
             return false;
+        },
+        "change .hide-completed input": function(event) {
+            Session.set("hideCompleted", event.target.checked);
         }
     });
 
@@ -36,6 +57,12 @@ if (Meteor.isClient) {
             Items.remove(this._id);
         }
     });
+
+
+    Tracker.autorun(function() {
+         document.title = "Simple Todos (" + Items.find({checked: {$ne: true}}).count() + ")"
+    });
+
 }
 
 if (Meteor.isServer) {

@@ -4,10 +4,15 @@
 <body>
     <div class="container">
         <header>
-            <h1>ToDo List</h1>
+            <h1>ToDo List ({{incompleteCount}})</h1>
+
+            <label class="hide-completed">
+                <input type="checkbox" checked="{{hideCompleted}}" />
+                Hide Completed Items
+            </label>
 
             <form class="new-item">
-                <input type="text" name="text" value="Type to add new items" />
+                <input type="text" name="text" placeholder="Type to add new items" />
             </form>
         </header>
 
@@ -23,7 +28,10 @@
 <template name="item">
     <li class="{{#if checked}}checked{{/if}}">
         <button class="delete">&times;</button>
-        <input type="checkbox" checked="{{checked}}" class="toggle-checked"/>
-        <span class="text">{{text}}</span>
+        <label>
+            <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+            <span class="text">{{text}}</span>
+        </label>
+
     </li>
 </template>
