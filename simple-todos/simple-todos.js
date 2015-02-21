@@ -27,6 +27,15 @@ if (Meteor.isClient) {
             return false;
         }
     });
+
+    Template.item.events({
+        "click .toggle-checked": function() {
+            Items.update(this._id, { $set: { checked: !this.checked } });
+        },
+        "click .delete": function () {
+            Items.remove(this._id);
+        }
+    });
 }
 
 if (Meteor.isServer) {
