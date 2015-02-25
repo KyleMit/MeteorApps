@@ -28,14 +28,16 @@ if (Meteor.isClient) {
 
     Template.body.events({
         "submit .new-item": function (event) {
-            // this funtion is called when the new task form is submitted
+            // this function is called when the new task form is submitted
             var form = event.target;
             var inputField = form.text;
             var text = inputField.value;
-            console.log(event);
+
             Items.insert({
                 text: text,
-                createdAt: new Date()
+                createdAt: new Date(),
+                owner: Meteor.userId(),
+                username: Meteor.user().username
             });
 
             // clear form
@@ -58,9 +60,18 @@ if (Meteor.isClient) {
         }
     });
 
+    Template.registerHelper('equals',
+        function(v1, v2) {
+            return (v1 === v2);
+        }
+    );
 
     Tracker.autorun(function() {
          document.title = "Simple Todos (" + Items.find({checked: {$ne: true}}).count() + ")"
+    });
+
+    Accounts.ui.config({
+        passwordSignupFields: "USERNAME_ONLY"
     });
 
 }
@@ -68,5 +79,6 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
     Meteor.startup(function () {
         // code to run on server at startup
+
     });
 }

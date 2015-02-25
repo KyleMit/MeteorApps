@@ -11,14 +11,20 @@
                 Hide Completed Items
             </label>
 
-            <form class="new-item">
-                <input type="text" name="text" placeholder="Type to add new items" />
-            </form>
+            {{> loginButtons}}
+
+            {{#if currentUser}}
+                <form class="new-item">
+                    <input type="text" name="text" placeholder="Type to add new items" />
+                </form>
+            {{/if}}
+
+
         </header>
 
         <ul>
             {{#each items}}
-            {{> item}}
+                {{> item}}
             {{/each}}
         </ul>
     </div>
@@ -27,10 +33,15 @@
 
 <template name="item">
     <li class="{{#if checked}}checked{{/if}}">
-        <button class="delete">&times;</button>
+        {{#if equals owner currentUser._id}}
+            <button class="delete">&times;</button>
+        {{/if}}
+
         <label>
             <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
-            <span class="text">{{text}}</span>
+            <span class="text">
+                <strong>{{username}}</strong> - {{text}}
+            </span>
         </label>
 
     </li>
