@@ -5,6 +5,8 @@ Items = new Mongo.Collection("items");
 
 if (Meteor.isClient) {
     // this code only runs on the client
+    Meteor.subscribe("items");
+
     Template.body.helpers({
         items: function () {
             var sort = { sort: { createdAt: -1 } };
@@ -54,8 +56,18 @@ if (Meteor.isClient) {
         "click .delete": function () {
             Meteor.call("deleteItem", this._id);
             //Items.remove(this._id);
+        },
+        "click .toggle-private": function() {
+            Meteor.call("setPrivate", this._id, !this.private)
         }
     });
+
+
+    Template.item.helpers({
+        isOwner: function() {
+            this.owner === Meteor.userId();
+        }
+    })
 
     Template.registerHelper('equals',
         function(v1, v2) {
@@ -77,6 +89,14 @@ if (Meteor.isServer) {
     Meteor.startup(function () {
         // code to run on server at startup
 
+    });
+    Meteor.publish("items", function() {
+        return Items.find({
+            $or: [
+                { private: {$ne: true} },
+                { owner: this.userId }
+            ]
+        });
     });
 }
 
@@ -100,6 +120,16 @@ Meteor.methods({
     },
     setChecked: function(itemId, setChecked) {
         Items.update(itemId, { $set: { checked: setChecked} })
+    },
+    setPrivate: function(itemId, setPrivate) {
+        var item = Items.findOne(itemId);
+
+        // make sure only the task owner can make a task private
+        if (item.owner !== Meteor.userId()) {
+            throw new Meteor.Error("not-authorized");
+        }
+
+        Items.update(itemId, { $set: { private: setPrivate} })
     }
 
 })

@@ -32,13 +32,25 @@
 
 
 <template name="item">
-    <li class="{{#if checked}}checked{{/if}}">
+    <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
         {{#if equals owner currentUser._id}}
             <button class="delete">&times;</button>
         {{/if}}
 
         <label>
             <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+
+            {{#if isOwner}}
+                    <button class="toggle-private" >
+                        {{#if private}}
+                            Private
+                        {{else}}
+                            Public
+                        {{/if}}
+                    </button>
+                {{/if}}
+
+
             <span class="text">
                 <strong>{{username}}</strong> - {{text}}
             </span>
