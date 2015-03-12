@@ -1,0 +1,112 @@
+<head>
+  <title>Food Tracker</title>
+
+</head>
+
+<body>
+    <div class="container">
+        {{> navbar}}
+
+
+    </div>
+</body>
+
+<template name="home">
+    <div class="container">
+        <h2>Home Page</h2>
+    </div>
+</template>
+
+<template name="navbar">
+    <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Food Tracker</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="foodlist">Food List</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {{> loginButtons}} <!-- here -->
+            </ul>
+        </div>
+    </div>
+
+</template>
+
+<template name="foodList">
+    <h2>Food List</h2>
+    {{#each foods}}
+        <table class="table table-striped tabled-border">
+            <tr>
+                <th>Name</th>
+                <th>Calories</th>
+                <th>Action</th>
+            </tr>
+
+            {{> foodSummary}}
+
+        </table>
+
+    {{/each}}
+
+
+</template>
+
+<template name="foodSummary">
+    <tr>
+        <th>{{Name}}</th>
+        <th>{{TotalCalories}}</th>
+        <th>
+            <a class="btn btn-primary edit" href="/food/{{_id}}">
+                <span class="fa fa-pencil"></span> Edit
+            </a>
+            <a class="btn btn-danger delete">
+                <span class="fa fa-trash"></span> Delete
+            </a>
+        </th>
+    </tr>
+</template>
+
+<template name="foodDetail">
+    <form>
+        <h2>{{Name}}</h2>
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input type="text" class="form-control" name="Name" placeholder="Enter Name" value="{{Name}}">
+        </div>
+        <div class="form-group">
+            <label for="Description">Description</label>
+            <input type="text" class="form-control" name="Description" placeholder="Enter Description" value="{{Description}}">
+        </div>
+        <div class="form-group">
+            <label for="ImageUrl">ImageUrl</label>
+            <input type="text" class="form-control" name="ImageUrl" placeholder="Enter ImageUrl" value="{{ImageUrl}}">
+        </div>
+        <div class="form-group">
+            <label for="TotalFat">TotalFat</label>
+            <input type="text" class="form-control" name="TotalFat" placeholder="Enter Total Fat" value="{{TotalFat}}">
+        </div>
+        <div class="form-group">
+            <label for="TotalCalories">TotalCalories</label>
+            <input type="text" class="form-control" name="TotalCalories" placeholder="Enter Total Calories" value="{{TotalCalories}}">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary submit">
+            <span class="fa fa-floppy-o"></span> Submit
+        </button>
+        <button type="button" class="btn btn-warning cancel">
+            <span class="fa fa-times"></span> Cancel
+        </button>
+        <button type="button" class="btn btn-danger delete">
+            <span class="fa fa-trash"></span> Delete
+        </button>
+    </form>
+</template>

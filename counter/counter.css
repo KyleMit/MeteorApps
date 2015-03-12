@@ -1,0 +1,7 @@
+/* CSS declarations go here */
+#login-buttons {
+    float: right;
+}
+#login-dropdown-list {
+    left: -120px;
+}
