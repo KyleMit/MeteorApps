@@ -8,10 +8,10 @@ meteor-platform
 autopublish
 insecure
 accounts-password
-natestrauser:font-awesome
-twbs:bootstrap
-ian:accounts-ui-bootstrap-3
 accounts-github
-accounts-facebook
 accounts-google
+accounts-facebook
+twbs:bootstrap
+natestrauser:font-awesome
+ian:accounts-ui-bootstrap-3
 iron:router
