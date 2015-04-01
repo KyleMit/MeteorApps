@@ -1,0 +1,46 @@
+.game-list {
+    margin-top: 1rem;
+    height: 40rem;
+    overflow-y: scroll;
+    border: 1px solid #ccc
+}
+
+.card {
+    width: 400px;
+    height: 200px;
+    position: absolute;
+    border: 1px solid grey;
+    background: white;
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+       -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
+
+.hand {
+    position: relative;
+}
+.card-number {
+    position: absolute;
+    top: 3px;
+    height: 200px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+}
+.card-number.bottom {
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+    top: -3px;
+}
+.card-title {
+    position: absolute;
+    width: 400px;
+    line-height:200px;
+    font-family: 'Rock Salt', cursive;
+    color: #EC474A;
+    font-size: 40px;
+    text-align: center;
+}

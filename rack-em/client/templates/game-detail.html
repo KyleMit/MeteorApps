@@ -1,0 +1,33 @@
+<template name="gameDetail">
+    Current Users: {{users.length}}
+
+    <button class="btn btn-danger leave-game">
+        Leave Game
+    </button>
+
+    <!-- Disable if already joined or at capacity-->
+    <button class="btn btn-primary join-game">
+        Join Game
+    </button>
+
+    <!-- Disable if not enough users or alreaady started -->
+    <button class="btn btn-success start-game">
+        Start Game
+    </button>
+
+
+    <div class="hand">
+        {{#each hand}}
+            {{> card}}
+        {{/each}}
+    </div>
+
+</template>
+
+<template name="card">
+    <div class="card" style="top:{{cardHeight index}}px;">
+        <div class="card-number top" style="left:{{numberWidth number}};">{{number}}</div>
+        <div class="card-title">RACK-EM</div>
+        <div class="card-number bottom" style="right:{{numberWidth number}};">{{number}}</div>
+    </div>
+</template>

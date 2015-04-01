@@ -1,0 +1,21 @@
+
+<template name="games">
+    <ul class="game-list list-group">
+        {{#each games}}
+            {{> game}}
+        {{/each}}
+    </ul>
+</template>
+
+<template name="game">
+    <li class="list-group-item">
+        <span class="badge">{{users.length}}</span>
+        <span title="{{createdAt}}">
+            {{prettifyDate createdAt}}
+        </span>
+        -
+        <a href="game/{{_id}}">
+            Join Game
+        </a>
+    </li>
+</template>
