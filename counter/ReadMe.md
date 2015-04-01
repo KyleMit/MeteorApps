@@ -1,8 +1,11 @@
 # Application to track foods consumed and calories burned
 
 ## Commands
+```
 cd counter
 meteor
+meteor deploy KyleFoodTracker.meteor.com
+```
 
 
 ## Atmosphere
