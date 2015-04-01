@@ -33,4 +33,4 @@ meteor remove autopublish
 
 
 
-
+meteor add fezvrasta:bootstrap-material-design

@@ -6,7 +6,6 @@
 
 meteor-platform
 accounts-password
-twbs:bootstrap
-natestrauser:font-awesome
 ian:accounts-ui-bootstrap-3
 iron:router
+fezvrasta:bootstrap-material-design
