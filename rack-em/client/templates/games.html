@@ -9,7 +9,9 @@
 
 <template name="game">
     <li class="list-group-item">
-        <span class="badge">{{users.length}}</span>
+        <span class="badge" title="{{users.length}} user(s) already joined">
+            {{users.length}}
+        </span>
         <span title="{{createdAt}}">
             {{prettifyDate createdAt}}
         </span>

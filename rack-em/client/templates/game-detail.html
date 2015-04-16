@@ -1,17 +1,29 @@
 <template name="gameDetail">
-    Current Users: {{users.length}}
+    <p>
+        Current Users: {{users.length}}
+    </p>
+
 
     <button class="btn btn-danger leave-game">
+        <div>
+            <i class="mdi-navigation-close"></i>
+        </div>
         Leave Game
     </button>
 
     <!-- Disable if already joined or at capacity-->
     <button class="btn btn-primary join-game">
+        <div>
+            <i class="mdi-social-person-add"></i>
+        </div>
         Join Game
     </button>
 
-    <!-- Disable if not enough users or alreaady started -->
+    <!-- Disable if not enough users or already started -->
     <button class="btn btn-success start-game">
+        <div>
+            <i class="mdi-av-play-arrow"></i>
+        </div>
         Start Game
     </button>
 

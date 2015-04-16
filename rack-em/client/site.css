@@ -1,10 +1,16 @@
+.create-game {
+    width: 90%;
+}
 .game-list {
     margin-top: 1rem;
     height: 40rem;
     overflow-y: scroll;
     border: 1px solid #ccc
 }
-
+.list-group .list-group-item {
+    padding: 5px 16px;
+    border-bottom: 1px solid grey;
+}
 .card {
     width: 400px;
     height: 200px;
