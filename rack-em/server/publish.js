@@ -4,6 +4,9 @@ Meteor.publish('games', function() {
 
 Meteor.publish('game', function(gameId) {
   check(gameId, String);
-
   return Games.find({_id: gameId});
 })
+
+Meteor.publish("directory", function () {
+  return Meteor.users.find({}, {fields: {emails: 1, profile: 1}});
+});

@@ -1,32 +1,46 @@
 <template name="gameDetail">
-    <p>
-        Current Users: {{users.length}}
-    </p>
+    <div>
+        <p>
+            <b>You are currently</b>:
+            {{#if userInGame}}
+                Logged Into Game
+            {{else}}
+                Logged Out of Game
+            {{/if}}
+        </p>
+
+        Current Users:
+        <ul>
+        {{#each users}}
+            <li>{{name}}</li>
+        {{/each}}
+         </ul>
+
+    </div>
 
 
-    <button class="btn btn-danger leave-game">
+    <button class="btn btn-danger leave-game {{#if userInGame}}{{else}}disabled{{/if}}">
         <div>
             <i class="mdi-navigation-close"></i>
         </div>
-        Leave Game
+        Leave
     </button>
 
     <!-- Disable if already joined or at capacity-->
-    <button class="btn btn-primary join-game">
+    <button class="btn btn-primary join-game {{#if userInGame}}disabled{{/if}}">
         <div>
             <i class="mdi-social-person-add"></i>
         </div>
-        Join Game
+        Join
     </button>
 
     <!-- Disable if not enough users or already started -->
-    <button class="btn btn-success start-game">
+    <button class="btn btn-success start-game {{#if userInGame}}{{else}}disabled{{/if}}">
         <div>
             <i class="mdi-av-play-arrow"></i>
         </div>
-        Start Game
+        Start
     </button>
-
 
     <div class="hand">
         {{#each hand}}

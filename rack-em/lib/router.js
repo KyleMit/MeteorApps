@@ -4,7 +4,7 @@ Router.route('/', function () {
   });
 });
 
-// given a url like "/food/5"
+// given a url like "/game/5"
 Router.route('game/:_id', function () {
   var id = this.params._id;
   this.render('gameDetail', {
