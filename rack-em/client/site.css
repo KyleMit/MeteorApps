@@ -1,3 +1,9 @@
+#login-dropdown-list .dropdown-menu {
+    background: white;
+}
+#login-other-options a {
+    background: white;
+}
 .create-game {
     width: 90%;
 }
