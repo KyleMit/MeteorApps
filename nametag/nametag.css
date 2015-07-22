@@ -1,0 +1,41 @@
+.nametag {
+    width: 300px; height: 200px;
+    background: #e00;
+    border-radius: 10px;
+    box-shadow: 1px 2px 5px rgba(0,0,0,.5), inset 0 0 20px rgba(0,0,0,.25); 
+    text-align: center;
+}
+.nametag .top {
+    height: 65px;
+    padding-top: 5px;
+    color: #fff;
+    font-family: Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+}
+.nametag h1,
+.nametag p {
+    padding: 0; margin: 0;
+}
+.nametag .top h1 {
+    font-size: 2em;
+}
+.nametag .bottom {
+    background: #fff;    
+    height: 120px;
+    font-family: "Comic Sans MS", cursive;
+    padding-top: 5px;
+}
+.nametag .name {
+    font-size: 3em;
+    font-weight: bold;
+}    
+.nametag .twitter {
+    font-size: 1.5em;
+    font-weight: bold;
+    font-style: normal;
+} 
+.nametag .twitter a {
+	text-decoration: none;
+	color: black;
+}
