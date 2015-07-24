@@ -1,0 +1,18 @@
+<template name="nametag">
+  <article class="nametag"> 
+    <header class="top"> 
+        <h1>Hello</h1> 
+        <p>my name is</p> 
+    </header> 
+    <div class="bottom"> 
+        <p class="name">{{name}}</p> 
+        {{#if twitter}}
+	        <address class="twitter">
+	        	<a href="https://twitter.com/{{twitter}}">
+	        		@{{twitter}}
+        		</a>
+	        </address> 
+        {{/if}}
+    </div>
+  </article>
+</template>

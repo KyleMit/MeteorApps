@@ -2,9 +2,9 @@ Package.describe({
   name: 'kylemit:nametag',
   version: '0.0.1',
   // Brief, one-line summary of the package.
-  summary: '',
+  summary: 'Adds a hello nametag template',
   // URL to the Git repository containing the source code for this package.
-  git: '',
+  git: 'https://github.com/KyleMit/MeteorApps/Packages/nametag',
   // By default, Meteor will default to using README.md for documentation.
   // To avoid submitting documentation, set this field to null.
   documentation: 'README.md'
@@ -12,7 +12,9 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
-  api.addFiles('nametag.js');
+  api.use("templating", "client")
+  api.addFiles('nametag.html', 'client');
+  api.addFiles('nametag.css', 'client');
 });
 
 Package.onTest(function(api) {
