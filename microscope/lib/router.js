@@ -8,8 +8,6 @@ Router.configure({
 	}
 });
 
-// Load notFoundTemplate if data returns falsy value on the postPage route
-Router.onBeforeAction('dataNotFound', {only: 'postPage'})
 
 // Define a route - 
 // What the default yield section should have
@@ -24,3 +22,18 @@ Router.route('/posts/:_id', {
 		return Posts.findOne(this.params._id);
 	}
 })
+
+// create require login function
+var requireLogin = function() {
+  if (! Meteor.user()) {
+    this.render('accessDenied');
+  } else {
+    this.next();
+  }
+}
+
+// add login function to postSumbit route before action
+Router.onBeforeAction(requireLogin, {only: 'postSubmit'})
+
+// Load notFoundTemplate if data returns falsy value on the postPage route
+Router.onBeforeAction('dataNotFound', {only: 'postPage'})
