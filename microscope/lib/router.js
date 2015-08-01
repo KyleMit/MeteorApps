@@ -15,6 +15,8 @@ Router.onBeforeAction('dataNotFound', {only: 'postPage'})
 // What the default yield section should have
 Router.route('/', {name: 'postsList'});
 
+Router.route('/submit', {name: 'postSubmit'});
+
 Router.route('/posts/:_id', {
 	name: 'postPage',
 	// pass in datacontext for template
