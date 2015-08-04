@@ -1,5 +1,9 @@
 Template.postsList.helpers({
 	posts: function() {
-		return Posts.find();
+		var operator = {};
+		operator.sort = {
+			submitted: -1
+		};
+		return Posts.find({}, operator);
 	}
 });
