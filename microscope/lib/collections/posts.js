@@ -15,6 +15,15 @@ Meteor.methods({
 			url: String
 		});
 
+		// check for duplicate url posts and return if found
+		var samePost = Posts.findOne({url: postAttributes.url});
+		if (samePost) {
+			return {
+				postExists: true,
+				_id: samePost._id
+			}
+		}
+
 		var user = Meteor.user();
 		var post = _.extend(postAttributes, {
 			userId: user._id,
