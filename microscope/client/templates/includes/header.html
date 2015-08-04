@@ -21,9 +21,11 @@
 				 id="navigation">
 			<ul class="nav navbar-nav">
 				<li>
-					<a href="{{pathFor 'postSubmit'}}">
-						Submit new post
-					</a>
+					{{#if currentUser}}
+						<a href="{{pathFor 'postSubmit'}}">
+							Submit new post
+						</a>
+					{{/if}}
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

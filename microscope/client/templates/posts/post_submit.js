@@ -11,10 +11,11 @@ Template.postSubmit.events({
       title: e.target.title.value
     };
 
-    // capture returned post id
-    post._id = Posts.insert(post);
-    
-    // navigate to new post on submit
-    Router.go('postPage', post)
+    Meteor.call('postInsert', post, function(error, result) {
+      // display any errors to the user and leave
+      if (error) return alert(error.reason);
+
+      Router.go('postPage', {_id: result._id});
+    });
   }
 });

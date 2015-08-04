@@ -26,7 +26,11 @@ Router.route('/posts/:_id', {
 // create require login function
 var requireLogin = function() {
   if (! Meteor.user()) {
-    this.render('accessDenied');
+  	if (Meteor.loggingIn()) {
+			this.render(this.loadingTemplate)
+  	} else {
+  		this.render('accessDenied');
+  	}
   } else {
     this.next();
   }
