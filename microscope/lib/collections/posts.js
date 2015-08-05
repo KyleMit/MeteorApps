@@ -4,7 +4,13 @@ Posts.allow({
   insert: function(userId, doc) {
     //only allow postif if you are logged in
     return !!userId;
-  }
+  },
+  update: function(userId, post) {
+  	return ownsDocument(userId, post)
+  },
+  remove: function(userId, post) {
+  	return ownsDocument(userId, post)
+  },
 });
 
 Meteor.methods({

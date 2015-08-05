@@ -23,6 +23,13 @@ Router.route('/posts/:_id', {
 	}
 })
 
+Router.route('/posts/:_id/edit', {
+	name: 'postEdit',
+	data: function() {
+		return Posts.findOne(this.params._id);
+	}
+})
+
 // create require login function
 var requireLogin = function() {
   if (! Meteor.user()) {
