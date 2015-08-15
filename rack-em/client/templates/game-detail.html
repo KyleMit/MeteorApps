@@ -19,7 +19,7 @@
     </div>
 
 
-    <button class="btn btn-danger leave-game {{#if userInGame}}{{else}}disabled{{/if}}">
+    <button class="btn btn-danger leave-game {{#unless userInGame}}disabled{{/unless}}">
         <div>
             <i class="mdi-navigation-close"></i>
         </div>
@@ -35,7 +35,7 @@
     </button>
 
     <!-- Disable if not enough users or already started -->
-    <button class="btn btn-success start-game {{#if userInGame}}{{else}}disabled{{/if}}">
+    <button class="btn btn-success start-game {{#unless userInGame}}disabled{{/unless}}">
         <div>
             <i class="mdi-av-play-arrow"></i>
         </div>

@@ -11,19 +11,24 @@ Template.gameDetail.helpers({
   hand: function() {
     return [
       {index: 1,  number: 5},
-      {index: 2,  number: 10},
-      {index: 3,  number: 15},
+      {index: 2,  number: 7},
+      {index: 3,  number: 33},
       {index: 4,  number: 20},
       {index: 5,  number: 25},
       {index: 6,  number: 30},
       {index: 7,  number: 35},
-      {index: 8,  number: 40},
+      {index: 8,  number: 8},
       {index: 9,  number: 45},
       {index: 10, number: 50}
     ]
   },
   userInGame: function() {
     return this.users.indexOf(Meteor.userId()) > -1
+  },
+  canJoin: function() {
+    console.log('Template', Template.instance())
+    // TODO - how to call other template methods - could convert into partent object
+    return !this.userInGame() && this.users.length < 5
   },
   users: function() {
     // doesn't work on initial load - wait till we have data
